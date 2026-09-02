@@ -1,1618 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pasandida Aurat — For Dr. Noor Fatima</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Cinzel:wght@400;500;600&family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root {
-      --deep-wine: #2D1B36;
-      --magenta-deep: #5C1A4D;
-      --magenta-light: #8B2255;
-      --coral: #F5A9B8;
-      --coral-light: #FFCDD8;
-      --rose-warm: #E8A0B0;
-      --gold: #DAA520;
-      --gold-light: #F0D58C;
-      --cream: #FFF5EE;
-      --blush: #FFE4E9;
-      --lavender: #E6E0F0;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 💐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--deep-wine);
-      color: var(--cream);
-      overflow-x: hidden;
-    }
-
-    .font-script {
-      font-family: 'Great Vibes', cursive;
-    }
-
-    .font-elegant {
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    .font-royal {
-      font-family: 'Cinzel', serif;
-    }
-
-    /* ========== FLOATING NICKNAMES ========== */
-    #floating-names {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .nickname {
-      position: absolute;
-      white-space: nowrap;
-      user-select: none;
-      opacity: 0;
-    }
-
-    .nickname-text {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nickname-emoji {
-      font-size: 0.8em;
-    }
-
-    .nick-layer-1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(2rem, 5vw, 4rem);
-      color: var(--coral);
-      text-shadow: 0 0 50px rgba(245, 169, 184, 0.5);
-      animation: floatNickSlow 18s infinite ease-in-out;
-    }
-
-    .nick-layer-2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      color: var(--rose-warm);
-      text-shadow: 0 0 30px rgba(232, 160, 176, 0.4);
-      animation: floatNickMedium 14s infinite ease-in-out;
-    }
-
-    .nick-layer-3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(0.9rem, 2vw, 1.3rem);
-      font-weight: 300;
-      color: var(--lavender);
-      text-shadow: 0 0 20px rgba(230, 224, 240, 0.3);
-      animation: floatNickFast 10s infinite ease-in-out;
-    }
-
-    .nick-glow {
-      text-shadow: 0 0 60px rgba(245, 169, 184, 0.7), 0 0 120px rgba(245, 169, 184, 0.4);
-      animation: floatNickGlow 15s infinite ease-in-out;
-    }
-
-    @keyframes floatNickSlow {
-      0%, 100% {
-        opacity: 0;
-        transform: translateY(30px) rotate(-1deg) scale(0.95);
-      }
-      20%, 80% {
-        opacity: 0.3;
-        transform: translateY(0) rotate(0deg) scale(1);
-      }
-    }
-
-    @keyframes floatNickMedium {
-      0%, 100% {
-        opacity: 0;
-        transform: translateY(25px) scale(0.9);
-      }
-      25%, 75% {
-        opacity: 0.25;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes floatNickFast {
-      0%, 100% {
-        opacity: 0;
-        transform: translateY(15px) scale(0.85);
-      }
-      30%, 70% {
-        opacity: 0.2;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes floatNickGlow {
-      0%, 100% {
-        opacity: 0;
-        transform: translateY(20px) scale(0.9);
-        filter: brightness(1);
-      }
-      50% {
-        opacity: 0.4;
-        transform: translateY(0) scale(1);
-        filter: brightness(1.3);
-      }
-    }
-
-    /* ========== PARTICLES ========== */
-    #particles-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* ========== FLOATING EMOJIS ========== */
-    #floating-emojis {
-      position: fixed;
-      inset: 0;
-      z-index: 3;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .float-emoji {
-      position: absolute;
-      font-size: 1.5rem;
-      opacity: 0;
-      animation: floatEmoji 12s infinite ease-in-out;
-    }
-
-    @keyframes floatEmoji {
-      0%, 100% {
-        opacity: 0;
-        transform: translateY(30px) scale(0.8);
-      }
-      30%, 70% {
-        opacity: 0.25;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* ========== MAIN CONTAINER ========== */
-    #main-container {
-      position: relative;
-      z-index: 10;
-    }
-
-    .page {
-      min-height: 100vh;
-      position: relative;
-    }
-
-    #page-proposal { display: block; }
-    #page-celebration { display: none; }
-    #page-celebration.active { display: block; }
-
-    /* ========== SECTIONS ========== */
-    .section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem;
-      position: relative;
-    }
-
-    /* ========== HERO ========== */
-    #hero {
-      background: radial-gradient(ellipse at 50% 30%, var(--magenta-deep) 0%, var(--deep-wine) 60%, #1A0F20 100%);
-    }
-
-    .hero-emoji-top {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      animation: emojiBounce 2s infinite ease-in-out;
-    }
-
-    @keyframes emojiBounce {
-      0%, 100% { transform: scale(1) rotate(-5deg); }
-      50% { transform: scale(1.1) rotate(5deg); }
-    }
-
-    .hero-content {
-      text-align: center;
-      z-index: 10;
-    }
-
-    .hero-title {
-      font-size: clamp(3rem, 10vw, 8rem);
-      color: var(--coral);
-      text-shadow: 0 0 80px rgba(245, 169, 184, 0.6);
-      opacity: 0;
-      animation: heroReveal 2s ease forwards;
-      animation-delay: 0.3s;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(0.9rem, 2vw, 1.3rem);
-      font-weight: 400;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--lavender);
-      margin-top: 1.5rem;
-      opacity: 0;
-      animation: heroReveal 2s ease forwards;
-      animation-delay: 1s;
-    }
-
-    .hero-name {
-      font-size: clamp(1.8rem, 5vw, 3.5rem);
-      color: var(--gold-light);
-      margin-top: 2rem;
-      opacity: 0;
-      animation: heroReveal 2s ease forwards;
-      animation-delay: 1.8s;
-      text-shadow: 0 0 40px rgba(240, 213, 140, 0.4);
-    }
-
-    .hero-emoji-row {
-      margin-top: 2rem;
-      font-size: 2rem;
-      opacity: 0;
-      animation: heroReveal 2s ease forwards;
-      animation-delay: 2.5s;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .hero-emoji-row span {
-      animation: emojiFloat 3s infinite ease-in-out;
-    }
-
-    .hero-emoji-row span:nth-child(2) { animation-delay: 0.3s; }
-    .hero-emoji-row span:nth-child(3) { animation-delay: 0.6s; }
-    .hero-emoji-row span:nth-child(4) { animation-delay: 0.9s; }
-
-    @keyframes emojiFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes heroReveal {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ========== GLASS CARDS ========== */
-    .glass-card {
-      background: linear-gradient(135deg, rgba(92, 26, 77, 0.25) 0%, rgba(45, 27, 54, 0.4) 100%);
-      backdrop-filter: blur(30px);
-      border: 1px solid rgba(245, 169, 184, 0.2);
-      border-radius: 2rem;
-      padding: clamp(2rem, 5vw, 4rem);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .glass-card::before {
-      content: '';
-      position: absolute;
-      top: -100%;
-      left: -100%;
-      width: 300%;
-      height: 300%;
-      background: conic-gradient(from 0deg, transparent, rgba(245, 169, 184, 0.05), transparent 30%);
-      animation: cardRotate 15s infinite linear;
-    }
-
-    @keyframes cardRotate {
-      to { transform: rotate(360deg); }
-    }
-
-    .section-title {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      color: var(--coral);
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-subtitle {
-      font-size: clamp(0.85rem, 2vw, 1.1rem);
-      font-weight: 400;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--lavender);
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    .section-emoji {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .section-quote {
-      font-size: clamp(1.3rem, 3vw, 1.9rem);
-      font-weight: 300;
-      line-height: 1.9;
-      text-align: center;
-      color: var(--cream);
-    }
-
-    .section-quote em {
-      color: var(--coral);
-      font-style: italic;
-    }
-
-    /* ========== HOME SECTION ========== */
-    #home {
-      background: linear-gradient(180deg, var(--deep-wine) 0%, var(--magenta-deep) 50%, var(--deep-wine) 100%);
-    }
-
-    .support-lines {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 2.5rem;
-    }
-
-    .support-line {
-      padding: 1.2rem 2rem;
-      background: linear-gradient(90deg, rgba(245, 169, 184, 0.12) 0%, transparent 100%);
-      border-left: 3px solid var(--coral);
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .support-line.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .support-line .emoji {
-      font-size: 1.2em;
-    }
-
-    /* ========== CARE SECTION ========== */
-    #care {
-      background: radial-gradient(ellipse at 50% 100%, var(--magenta-light) 0%, var(--magenta-deep) 50%, var(--deep-wine) 100%);
-    }
-
-    .care-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1400px;
-      width: 100%;
-    }
-
-    .care-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(245, 169, 184, 0.15);
-      border-radius: 1.5rem;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      opacity: 0;
-      transform: translateY(40px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .care-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .care-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      border-color: var(--coral);
-      box-shadow: 0 25px 70px rgba(245, 169, 184, 0.2);
-    }
-
-    .care-emoji {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .care-text {
-      font-size: clamp(1.1rem, 2vw, 1.3rem);
-      color: var(--cream);
-      line-height: 1.6;
-    }
-
-    /* ========== STRENGTH SECTION ========== */
-    #strength {
-      background: linear-gradient(180deg, var(--deep-wine) 0%, var(--magenta-deep) 50%, var(--deep-wine) 100%);
-    }
-
-    .crown-container {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .crown-emoji {
-      font-size: 4rem;
-      display: block;
-      margin-bottom: 1rem;
-      opacity: 0;
-      transform: translateY(-20px);
-      transition: all 0.8s ease;
-    }
-
-    .crown-emoji.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .queen-name {
-      font-size: clamp(2.5rem, 7vw, 5.5rem);
-      color: var(--coral);
-      text-shadow: 0 0 60px rgba(245, 169, 184, 0.5);
-      opacity: 0;
-    }
-
-    .queen-name.visible {
-      opacity: 1;
-      animation: queenGlow 3s infinite ease-in-out;
-    }
-
-    @keyframes queenGlow {
-      0%, 100% { text-shadow: 0 0 60px rgba(245, 169, 184, 0.5); }
-      50% { text-shadow: 0 0 100px rgba(245, 169, 184, 0.7), 0 0 150px rgba(245, 169, 184, 0.4); }
-    }
-
-    /* ========== NIGHT SKY ========== */
-    #nightsky {
-      background: radial-gradient(ellipse at 50% 0%, #2A1F3D 0%, var(--deep-wine) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #stars-canvas {
-      position: absolute;
-      inset: 0;
-    }
-
-    .night-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-    }
-
-    .star-name {
-      font-size: clamp(2rem, 6vw, 4.5rem);
-      color: var(--cream);
-      text-shadow: 0 0 50px rgba(255, 255, 255, 0.5), 0 0 100px rgba(245, 169, 184, 0.4);
-      opacity: 0;
-      transition: opacity 2s ease;
-    }
-
-    .star-name.visible {
-      opacity: 1;
-    }
-
-    .shooting-star {
-      position: absolute;
-      width: 120px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--coral), var(--gold-light), transparent);
-      opacity: 0;
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--coral);
-    }
-
-    .shooting-star.animate {
-      animation: shoot 1.5s ease-out forwards;
-    }
-
-    @keyframes shoot {
-      0% { opacity: 0; transform: translateX(0) translateY(0) rotate(-45deg); }
-      10% { opacity: 1; }
-      100% { opacity: 0; transform: translateX(500px) translateY(500px) rotate(-45deg); }
-    }
-
-    /* ========== MESSAGE ========== */
-    #message {
-      background: linear-gradient(180deg, var(--magenta-deep) 0%, var(--deep-wine) 100%);
-    }
-
-    .message-card {
-      max-width: 900px;
-      width: 100%;
-    }
-
-    .message-text p {
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      line-height: 2;
-      margin-bottom: 1.8rem;
-      font-weight: 300;
-    }
-
-    .message-highlight {
-      color: var(--coral);
-      font-style: italic;
-    }
-
-    /* ========== PROPOSAL ========== */
-    #proposal {
-      background: radial-gradient(ellipse at 50% 50%, var(--magenta-deep) 0%, var(--deep-wine) 100%);
-      min-height: 100vh;
-    }
-
-    .proposal-content {
-      text-align: center;
-    }
-
-    #ring-container {
-      width: 250px;
-      height: 250px;
-      margin: 0 auto 2rem;
-      position: relative;
-    }
-
-    #ring-canvas {
-      width: 100%;
-      height: 100%;
-    }
-
-    .ring-glow {
-      position: absolute;
-      inset: 15%;
-      background: radial-gradient(circle, rgba(245, 169, 184, 0.4) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: ringGlow 2s infinite ease-in-out;
-    }
-
-    @keyframes ringGlow {
-      0%, 100% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.3); opacity: 0.9; }
-    }
-
-    .proposal-emoji {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .proposal-question {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      font-weight: 300;
-      line-height: 2;
-      color: var(--cream);
-      max-width: 700px;
-      margin: 0 auto 2.5rem;
-    }
-
-    .proposal-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .proposal-btn {
-      padding: 1.4rem 3.5rem;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: none;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .btn-yes {
-      background: linear-gradient(135deg, var(--coral) 0%, var(--rose-warm) 100%);
-      color: var(--deep-wine);
-      box-shadow: 0 10px 40px rgba(245, 169, 184, 0.4);
-    }
-
-    .btn-yes:hover {
-      transform: scale(1.06);
-      box-shadow: 0 15px 50px rgba(245, 169, 184, 0.5);
-    }
-
-    .btn-always {
-      background: transparent;
-      border: 2px solid var(--coral);
-      color: var(--coral);
-    }
-
-    .btn-always:hover {
-      background: rgba(245, 169, 184, 0.15);
-      transform: scale(1.05);
-    }
-
-    /* ========== CELEBRATION PAGE ========== */
-    #page-celebration {
-      background: radial-gradient(ellipse at 50% 30%, var(--magenta-light) 0%, var(--magenta-deep) 50%, var(--deep-wine) 100%);
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #confetti-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      pointer-events: none;
-    }
-
-    .celebration-hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      z-index: 10;
-    }
-
-    .celebration-emoji {
-      font-size: 4rem;
-      margin-bottom: 2rem;
-      animation: celebEmoji 1.5s infinite ease-in-out;
-    }
-
-    @keyframes celebEmoji {
-      0%, 100% { transform: scale(1) rotate(-5deg); }
-      50% { transform: scale(1.2) rotate(5deg); }
-    }
-
-    .celebration-name {
-      font-size: clamp(2.5rem, 9vw, 7rem);
-      color: var(--coral);
-      text-shadow: 0 0 100px rgba(245, 169, 184, 0.8);
-      animation: celebratePulse 2s infinite ease-in-out;
-    }
-
-    @keyframes celebratePulse {
-      0%, 100% { text-shadow: 0 0 100px rgba(245, 169, 184, 0.8); }
-      50% { text-shadow: 0 0 150px rgba(245, 169, 184, 1), 0 0 250px rgba(245, 169, 184, 0.5); }
-    }
-
-    .celebration-subtitle {
-      font-size: clamp(1.3rem, 3vw, 2rem);
-      color: var(--lavender);
-      margin-top: 1.5rem;
-      letter-spacing: 0.15em;
-    }
-
-    .celebration-message {
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-      color: var(--cream);
-      margin-top: 2.5rem;
-      max-width: 700px;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .celebration-hearts {
-      display: flex;
-      gap: 2rem;
-      margin-top: 3rem;
-      font-size: 2.5rem;
-    }
-
-    .celebration-hearts span {
-      animation: heartBeat 1.2s infinite ease-in-out;
-    }
-
-    .celebration-hearts span:nth-child(2) { animation-delay: 0.15s; }
-    .celebration-hearts span:nth-child(3) { animation-delay: 0.3s; }
-    .celebration-hearts span:nth-child(4) { animation-delay: 0.45s; }
-    .celebration-hearts span:nth-child(5) { animation-delay: 0.6s; }
-
-    @keyframes heartBeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.3); }
-    }
-
-    /* ========== NICKNAMES SECTION ========== */
-    #nicknames-section {
-      background: linear-gradient(180deg, var(--magenta-deep) 0%, var(--deep-wine) 100%);
-      padding: 6rem 2rem;
-    }
-
-    .nicknames-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .nickname-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(245, 169, 184, 0.2);
-      border-radius: 1.5rem;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.5s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .nickname-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .nickname-card:hover {
-      border-color: var(--coral);
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(245, 169, 184, 0.15);
-    }
-
-    .nickname-card-emoji {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .nickname-card-text {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      color: var(--coral);
-    }
-
-    /* ========== PROMISES ========== */
-    #promises {
-      background: linear-gradient(180deg, var(--deep-wine) 0%, var(--magenta-deep) 100%);
-      padding: 6rem 2rem;
-    }
-
-    .promises-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .promise-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(245, 169, 184, 0.15);
-      border-radius: 1.5rem;
-      padding: 2.5rem;
-      text-align: center;
-      transition: all 0.5s ease;
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .promise-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .promise-card:hover {
-      border-color: var(--coral);
-      transform: translateY(-10px);
-      box-shadow: 0 20px 60px rgba(245, 169, 184, 0.15);
-    }
-
-    .promise-number {
-      font-size: 2.5rem;
-      color: var(--gold);
-      font-weight: 300;
-      margin-bottom: 0.5rem;
-    }
-
-    .promise-emoji {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .promise-text {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--cream);
-      line-height: 1.7;
-    }
-
-    /* ========== FINAL MESSAGE ========== */
-    #final-message {
-      background: radial-gradient(ellipse at 50% 100%, var(--magenta-deep) 0%, var(--deep-wine) 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .final-content {
-      text-align: center;
-      max-width: 900px;
-      padding: 2rem;
-    }
-
-    .final-emoji {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-    }
-
-    .final-title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      color: var(--coral);
-      margin-bottom: 2rem;
-    }
-
-    .final-text {
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
-      line-height: 2;
-      color: var(--cream);
-      font-weight: 300;
-    }
-
-    .final-signature {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      color: var(--coral);
-      margin-top: 2.5rem;
-    }
-
-    /* ========== SCROLL INDICATOR ========== */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.8rem;
-      color: var(--coral-light);
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0.8;
-      animation: scrollBounce 2.5s infinite;
-    }
-
-    @keyframes scrollBounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(12px); }
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 768px) {
-      .glass-card { margin: 0 1rem; padding: 2rem; }
-      .care-grid { padding: 0 1rem; }
-      .proposal-buttons { flex-direction: column; align-items: center; }
-      .proposal-btn { width: 100%; max-width: 280px; justify-content: center; }
-      .celebration-hearts { gap: 1rem; font-size: 2rem; }
-    }
+        margin: 0;
+        min-height: 100vh;
+        overflow: hidden;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* ————— SCENES (crossfade between them) ————— */
+    .scene {
+        position: fixed; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        justify-content: safe center;
+        gap: 16px; padding: 24px; text-align: center;
+        opacity: 0; pointer-events: none;
+        transition: opacity 1s ease;
+    }
+    .scene.active { opacity: 1; pointer-events: auto; }
+
+    /* freeze animations in hidden scenes so they start fresh when revealed */
+    .scene:not(.active) * { animation-play-state: paused; }
+
+    #scene-envelope { background: radial-gradient(circle at 50% 18%, #233052, #0f172a 72%); }
+    #scene-letter   { background: radial-gradient(circle at 50% 30%, #43223a, #1d1126 75%); }
+    #scene-bouquet  {
+        background:
+            radial-gradient(1.5px 1.5px at 12% 22%, rgba(255,255,255,.7), transparent),
+            radial-gradient(1.5px 1.5px at 78% 14%, rgba(255,255,255,.5), transparent),
+            radial-gradient(2px 2px at 55% 38%, rgba(255,255,255,.35), transparent),
+            radial-gradient(1.5px 1.5px at 88% 55%, rgba(255,255,255,.6), transparent),
+            radial-gradient(2px 2px at 30% 60%, rgba(255,255,255,.3), transparent),
+            radial-gradient(circle at 50% 90%, #1d3557, #0a1026 75%);
+    }
+
+    .scene-title {
+        font-family: 'Dancing Script', 'Brush Script MT', cursive;
+        color: #f9a8d4; font-weight: 700; margin: 0; letter-spacing: 1px;
+        font-size: clamp(2.1rem, 6vw, 3.3rem);
+        animation: fadeUp 1.2s .25s both;
+    }
+    .sub {
+        color: #94a3b8; font-style: italic; font-size: 1.05rem;
+        margin: -10px 0 0; animation: fadeUp 1.2s .5s both;
+    }
+
+    /* ————— SCENE 1 : ENVELOPE ————— */
+    .envelope {
+        position: relative;
+        width: min(300px, 80vw); height: 190px;
+        margin-top: 14px; cursor: pointer; user-select: none;
+        filter: drop-shadow(0 18px 28px rgba(0,0,0,.5));
+        perspective: 900px;
+        animation: floaty 3.4s ease-in-out infinite alternate;
+        transition: transform .3s;
+    }
+    .envelope:not(.open):hover { transform: scale(1.04) rotate(-1deg); }
+
+    .env-back { position: absolute; inset: 0; border-radius: 10px; background: linear-gradient(#e11d48, #9f1239); }
+    .env-card {
+        position: absolute; left: 14px; right: 14px; top: 12px; bottom: 12px;
+        border-radius: 6px; background: #fff7f9; color: #e11d48;
+        font-size: 62px; line-height: 1; z-index: 3;
+        display: flex; align-items: center; justify-content: center;
+        transition: transform .9s cubic-bezier(.22,1,.36,1) .55s;
+    }
+    .envelope.open .env-card { transform: translateY(-125px) scale(1.06); }
+    .env-front {
+        position: absolute; inset: 0; border-radius: 10px; z-index: 4;
+        background: linear-gradient(160deg, #fb7185, #e11d48);
+        clip-path: polygon(0 0, 50% 46%, 100% 0, 100% 100%, 0 100%);
+    }
+    .env-flap {
+        position: absolute; left: 0; right: 0; top: 0; height: 52%;
+        border-radius: 10px 10px 0 0; z-index: 5;
+        background: linear-gradient(#fda4af, #f43f5e);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        transform-origin: top center;
+        transition: transform .7s cubic-bezier(.55,0,.35,1), z-index 0s .7s;
+    }
+    .envelope.open .env-flap { transform: rotateX(180deg); z-index: 1; }
+    .env-seal {
+        position: absolute; left: 50%; bottom: -17px; transform: translateX(-50%);
+        width: 34px; height: 34px; border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #fb7185, #be123c);
+        box-shadow: 0 3px 8px rgba(0,0,0,.4);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; font-size: 15px; transition: opacity .4s;
+    }
+    .envelope.open .env-seal { opacity: 0; }
+    .hint {
+        color: #64748b; font-style: italic; letter-spacing: 1px;
+        animation: hintPulse 2.4s ease-in-out infinite; transition: opacity .5s;
+    }
+
+    /* ————— SCENE 2 : THE LETTER ————— */
+    .letter {
+        position: relative;
+        width: min(560px, 92vw);
+        background: #fffaf3; color: #4a2b3a;
+        border-radius: 8px;
+        padding: clamp(26px, 5vw, 44px) clamp(22px, 6vw, 52px);
+        box-shadow: 0 25px 60px rgba(0,0,0,.45);
+        transform: rotate(-.6deg);
+        font-family: 'Dancing Script', 'Brush Script MT', cursive;
+    }
+    .letter::before, .letter::after {
+        content: ""; position: absolute; top: -12px;
+        width: 90px; height: 26px; border-radius: 3px;
+        background: rgba(244,114,182,.35);
+    }
+    .letter::before { left: 8%; transform: rotate(-4deg); }
+    .letter::after  { right: 8%; transform: rotate(5deg); }
+
+    .letter-title { font-size: clamp(1.9rem, 5vw, 2.6rem); margin: 0 0 10px; color: #be185d; font-weight: 700; }
+    .letter p { font-size: clamp(1.15rem, 3vw, 1.5rem); line-height: 1.6; margin: .55em 0; }
+    .letter .signature { text-align: right; color: #9d174d; margin-top: 1.1em; }
+
+    .letter > * { animation: fadeUp .9s ease both; }
+    .letter > :nth-child(1) { animation-delay: .25s; }
+    .letter > :nth-child(2) { animation-delay: .55s; }
+    .letter > :nth-child(3) { animation-delay: .85s; }
+    .letter > :nth-child(4) { animation-delay: 1.15s; }
+    .letter > :nth-child(5) { animation-delay: 1.45s; }
+    .letter > :nth-child(6) { animation-delay: 1.75s; }
+    .letter > :nth-child(7) { animation-delay: 2.1s; }
+
+    .btn {
+        margin-top: 24px; padding: 12px 28px; border: none; border-radius: 999px;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 1.15rem; letter-spacing: .5px;
+        background: linear-gradient(135deg, #f472b6, #db2777); color: #fff;
+        cursor: pointer; box-shadow: 0 8px 22px rgba(219,39,119,.45);
+        transition: transform .25s, box-shadow .25s;
+    }
+    .btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 28px rgba(219,39,119,.6); }
+
+    .float-heart {
+        position: absolute; bottom: -50px; opacity: 0;
+        animation: heartUp var(--d,12s) linear infinite;
+        animation-delay: var(--del,0s);
+    }
+
+    /* ————— SCENE 3 : THE BOUQUET ————— */
+    .bouquet-container { position: relative; width: 360px; height: 440px; flex: none; }
+    .shadow {
+        position: absolute; bottom: 6px; left: 50%; width: 250px; height: 26px;
+        transform: translateX(-50%); z-index: 0;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,.55), transparent 70%);
+    }
+    .paper-back {
+        position: absolute; bottom: 28px; left: 50%; width: 240px; height: 150px;
+        transform: translateX(-50%); z-index: 8;
+        background: linear-gradient(135deg, #fecdd3, #fb7185);
+        clip-path: polygon(0 0, 100% 0, 88% 100%, 12% 100%);
+        animation: rise .9s ease-out 1.7s backwards;
+    }
+    .wrapper {
+        position: absolute; bottom: 20px; left: 50%; width: 200px; height: 132px;
+        transform: translateX(-50%); z-index: 50;
+        background: linear-gradient(135deg, #fda4af, #f43f5e);
+        clip-path: polygon(0 0, 100% 0, 84% 100%, 16% 100%);
+        animation: rise .9s ease-out 2s backwards;
+    }
+    .wrapper::after {
+        content: ""; position: absolute; top: 20px; left: 0; right: 0; height: 13px;
+        background: rgba(159,18,57,.35);
+    }
+    .bow {
+        position: absolute; bottom: 122px; left: 50%; z-index: 51;
+        transform: translateX(-50%);
+        animation: riseB .9s ease-out 2.3s backwards;
+    }
+    .bow .loop {
+        position: absolute; top: -9px; width: 30px; height: 19px; border-radius: 50%;
+        background: linear-gradient(#fb7185, #be123c);
+        box-shadow: 0 2px 6px rgba(0,0,0,.35);
+    }
+    .bow .loop.l { left: -30px; transform: rotate(-22deg); }
+    .bow .loop.r { left: 0;     transform: rotate(22deg); }
+    .bow .knot {
+        position: absolute; top: -6px; left: -6px; width: 12px; height: 12px;
+        border-radius: 50%; background: #9f123c;
+    }
+
+    /* stems + flowers are generated by JS */
+    .flower-group {
+        position: absolute; bottom: 42px; left: 50%;
+        width: 6px; margin-left: -3px;
+        transform-origin: bottom center;
+    }
+    .sway {
+        position: absolute; inset: 0;
+        transform-origin: bottom center;
+        animation: sway 5s ease-in-out infinite alternate;
+    }
+    .stem {
+        position: absolute; inset: 0; border-radius: 3px;
+        background: linear-gradient(#4ade80, #166534);
+        transform-origin: bottom center;
+        animation: grow 1s cubic-bezier(.22,1,.36,1) backwards;
+        animation-delay: var(--g, 0s);
+    }
+    .leaf {
+        position: absolute; left: 3px; width: 30px; height: 13px;
+        background: linear-gradient(#4ade80, #15803d);
+        transform-origin: 0 50%;
+        animation: fadeIn .6s backwards;
+        animation-delay: var(--lf, 1.2s);
+    }
+    .leaf-l { border-radius: 100% 0 100% 0; transform: rotate(14deg); }
+    .leaf-r { border-radius: 0 100% 0 100%; transform: rotate(-14deg); }
+
+    .flower {
+        position: absolute;
+        width: var(--fs, 60px); height: var(--fs, 60px);
+        left: calc(3px - var(--fs, 60px) * .5);
+        top: calc(var(--fs, 60px) * -.5);
+        z-index: 3;
+        animation: pop .7s cubic-bezier(.34,1.56,.64,1) backwards;
+        animation-delay: var(--p, 0s);
+    }
+    .petals { position: absolute; inset: 0; animation: spin var(--sd, 18s) linear infinite; }
+    .petal {
+        position: absolute; left: 50%; top: 50%;
+        width: calc(var(--fs, 60px) * .40);
+        height: calc(var(--fs, 60px) * .66);
+        margin: calc(var(--fs, 60px) * -.66) 0 0 calc(var(--fs, 60px) * -.20);
+        border-radius: 50% 50% 0 0;
+        transform-origin: 50% 100%;
+    }
+    .center {
+        position: absolute; left: 50%; top: 50%;
+        width: calc(var(--fs, 60px) * .34); height: calc(var(--fs, 60px) * .34);
+        margin: calc(var(--fs, 60px) * -.17) 0 0 calc(var(--fs, 60px) * -.17);
+        border-radius: 50%; z-index: 2;
+        background: radial-gradient(circle at 35% 35%, #fde68a, #f59e0b);
+        box-shadow: 0 0 calc(var(--fs, 60px) * .2) rgba(250,204,21,.55);
+        animation: pulse 2.6s ease-in-out infinite;
+    }
+    /* petal color themes */
+    .c1 .petal { background: radial-gradient(circle at 35% 75%, #f472b6, #db2777); }
+    .c2 .petal { background: radial-gradient(circle at 35% 75%, #fb7185, #e11d48); }
+    .c3 .petal { background: radial-gradient(circle at 35% 75%, #d8b4fe, #9333ea); }
+    .c4 .petal { background: radial-gradient(circle at 35% 75%, #7dd3fc, #0284c7); }
+    .c5 .petal { background: radial-gradient(circle at 35% 75%, #fda4af, #f43f5e); }
+    .c6 .petal { background: radial-gradient(circle at 35% 75%, #f0abfc, #a855f7); }
+    .c7 .petal { background: radial-gradient(circle at 35% 75%, #fdba74, #ea580c); }
+
+    /* baby's-breath filler dots */
+    .filler {
+        position: absolute; width: 8px; height: 8px; border-radius: 50%;
+        background: #fff; opacity: .95; z-index: 30;
+        box-shadow: 9px 7px 0 1px #fff, -8px 9px 0 1px rgba(255,255,255,.92),
+                    6px -8px 0 1px rgba(255,255,255,.95), -9px -6px 0 1px rgba(255,255,255,.85),
+                    0 0 14px rgba(255,255,255,.45);
+        animation: pop .6s cubic-bezier(.34,1.56,.64,1) backwards;
+        animation-delay: var(--p, 1.9s);
+    }
+
+    /* falling petals */
+    .fall-petal {
+        position: absolute; top: -6vh; width: 14px; height: 20px;
+        border-radius: 50% 50% 0 0; opacity: 0;
+        background: linear-gradient(#fda4af, #e11d48);
+        animation: fall var(--d, 12s) linear infinite;
+        animation-delay: var(--del, 0s);
+    }
+    .fp2 { background: linear-gradient(#f472b6, #db2777); }
+    .fp3 { background: linear-gradient(#d8b4fe, #9333ea); }
+    .fp4 { background: linear-gradient(#7dd3fc, #0284c7); }
+    .fp5 { background: linear-gradient(#fdba74, #ea580c); }
+
+    .final-note { margin-top: 4px; animation: fadeUp 1.2s ease 3.2s both; }
+    .final-note h2 {
+        font-family: 'Dancing Script', cursive; color: #f9a8d4;
+        font-size: clamp(1.8rem, 5vw, 2.6rem); margin: 0; font-weight: 700;
+    }
+    .final-note p { color: #cbd5e1; font-style: italic; margin: 6px 0 0; }
+    .beat { display: inline-block; animation: beat 1.4s ease-in-out infinite; }
+    .replay {
+        margin-top: 16px; background: none; cursor: pointer;
+        border: 1px solid rgba(249,168,212,.4); color: #f9a8d4;
+        border-radius: 999px; padding: 7px 18px;
+        font-family: 'Cormorant Garamond', Georgia, serif; font-size: .95rem;
+        transition: background .3s;
+    }
+    .replay:hover { background: rgba(249,168,212,.12); }
+
+    /* ————— ANIMATIONS ————— */
+    @keyframes fadeUp   { from { opacity: 0; transform: translateY(18px); } }
+    @keyframes fadeIn   { from { opacity: 0; } }
+    @keyframes hintPulse{ 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+    @keyframes floaty   { from { translate: 0 0; } to { translate: 0 -10px; } }
+    @keyframes heartUp  {
+        0%   { transform: translate(0,0) rotate(0); opacity: 0; }
+        8%   { opacity: .75; }
+        92%  { opacity: .6; }
+        100% { transform: translate(var(--dx,24px), -105vh) rotate(40deg); opacity: 0; }
+    }
+    @keyframes rise     { from { opacity: 0; transform: translate(-50%, 40px); } }
+    @keyframes riseB    { from { opacity: 0; transform: translate(-50%, 40px); } }
+    @keyframes grow     { from { transform: scaleY(0); } }
+    @keyframes pop      { from { transform: scale(0); } }
+    @keyframes sway     { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }
+    @keyframes spin     { to { transform: rotate(1turn); } }
+    @keyframes pulse    { 0%,100% { transform: scale(1); } 50% { transform: scale(1.18); } }
+    @keyframes beat     {
+        0%,100% { transform: scale(1); } 12% { transform: scale(1.28); }
+        24% { transform: scale(1); } 36% { transform: scale(1.18); } 48% { transform: scale(1); }
+    }
+    @keyframes fall     {
+        0%   { transform: translate(0,0) rotate(0); opacity: 0; }
+        8%   { opacity: .85; }
+        100% { transform: translate(var(--dx, 4vw), 112vh) rotate(300deg); opacity: 0; }
+    }
+
+    /* smaller screens: shrink the bouquet */
+    @media (max-width: 420px), (max-height: 700px) { .bouquet-container { transform: scale(.8); } }
+    @media (max-width: 360px), (max-height: 600px) { .bouquet-container { transform: scale(.66); } }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+        .petals, .sway, .fall-petal, .float-heart, .beat, .envelope, .hint { animation: none !important; }
+        .flower, .stem, .leaf, .filler, .paper-back, .wrapper, .bow { animation-duration: .01s !important; animation-delay: 0s !important; }
     }
-  </style>
+</style>
 </head>
 <body>
-  <!-- Floating Nicknames Background -->
-  <div id="floating-names"></div>
 
-  <!-- Particles -->
-  <canvas id="particles-canvas"></canvas>
+<!-- ═══════════ SCENE 1 : THE ENVELOPE ═══════════ -->
+<section class="scene active" id="scene-envelope">
+    <h1 class="scene-title">For You 💌</h1>
+    <p class="sub">a little something I made for you</p>
+    <div class="envelope" id="envelope">
+        <div class="env-back"></div>
+        <div class="env-card">💗</div>
+        <div class="env-front"></div>
+        <div class="env-flap"><div class="env-seal">❤</div></div>
+    </div>
+    <p class="hint">tap the envelope to open</p>
+</section>
 
-  <!-- Floating Emojis -->
-  <div id="floating-emojis"></div>
+<!-- ═══════════ SCENE 2 : THE LETTER ═══════════ -->
+<section class="scene" id="scene-letter">
+    <div class="letter">
+        <!-- ✏️ PUT HER NAME HERE, e.g.  "My dearest Priya," -->
+        <h2 class="letter-title">My dearest,</h2>
 
-  <!-- Main Container -->
-  <div id="main-container">
-    <!-- ========== PROPOSAL PAGE ========== -->
-    <div id="page-proposal" class="page">
-      <!-- Hero -->
-      <section id="hero" class="section">
-        <div class="hero-content">
-          <div class="hero-emoji-top">💕</div>
-          <h1 class="hero-title font-script">Pasandida Aurat</h1>
-          <p class="hero-subtitle font-royal">A Digital Love Universe</p>
-          <p class="hero-name font-script">For Dr. Noor Fatima</p>
-          <div class="hero-emoji-row">
-            <span>❤️</span>
-            <span>😘</span>
-            <span>🥹</span>
-            <span>✨</span>
-          </div>
-        </div>
-        <div class="scroll-indicator">
-          <span>Begin Our Journey</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-          </svg>
-        </div>
-      </section>
+        <!-- ✏️ YOUR MESSAGE — edit these lines freely -->
+        <p>Some people search their whole lives for a feeling I get every time I see you.</p>
+        <p>If I had a single flower for every time you cross my mind, I could walk through my garden forever.</p>
+        <p>Your smile turns ordinary days into magic, and your laugh is still my favorite sound in the world.</p>
+        <p>So here is a bouquet that can never wilt — because what I feel for you never will.</p>
 
-      <!-- Home Section -->
-      <section id="home" class="section">
-        <div class="glass-card max-w-4xl">
-          <div class="section-emoji">🏠💕</div>
-          <p class="section-subtitle font-royal">Safe Haven</p>
-          <h2 class="section-title font-script">You Feel Like Home</h2>
-          <blockquote class="section-quote">
-            "With you, I feel <em>safe</em>.<br>
-            With you, I feel <em>understood</em>.<br>
-            With you, I feel <em>home</em>."
-          </blockquote>
-          <div class="support-lines">
-            <div class="support-line"><span class="emoji">🤗</span> You support me in every situation.</div>
-            <div class="support-line"><span class="emoji">💪</span> You believe in me when I doubt myself.</div>
-            <div class="support-line"><span class="emoji">🤝</span> You stand beside me in every challenge.</div>
-            <div class="support-line"><span class="emoji">☀️</span> You make my problems feel lighter.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Care Section -->
-      <section id="care" class="section">
-        <div class="w-full max-w-6xl mx-auto px-4">
-          <div class="section-emoji">🌸💕</div>
-          <p class="section-subtitle font-royal">Tender Affection</p>
-          <h2 class="section-title font-script">The Way You Care</h2>
-          <p class="text-center text-lg mb-12" style="color: var(--lavender);">
-            "You care about every little thing that matters to me."
-          </p>
-          <div class="care-grid">
-            <div class="care-card">
-              <span class="care-emoji">❤️</span>
-              <p class="care-text">You respect my feelings.</p>
-            </div>
-            <div class="care-card">
-              <span class="care-emoji">🛡️</span>
-              <p class="care-text">You protect my peace.</p>
-            </div>
-            <div class="care-card">
-              <span class="care-emoji">👂</span>
-              <p class="care-text">You listen to my smallest concerns.</p>
-            </div>
-            <div class="care-card">
-              <span class="care-emoji">⭐</span>
-              <p class="care-text">You value my words.</p>
-            </div>
-            <div class="care-card">
-              <span class="care-emoji">☕</span>
-              <p class="care-text">If I dislike something, you avoid it.</p>
-            </div>
-            <div class="care-card">
-              <span class="care-emoji">😊</span>
-              <p class="care-text">You always consider my happiness.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Strength Section -->
-      <section id="strength" class="section">
-        <div class="text-center max-w-4xl">
-          <div class="section-emoji">👑💕</div>
-          <p class="section-subtitle font-royal">Royal Devotion</p>
-          <h2 class="section-title font-script">My Strength, My Support</h2>
-          <div class="crown-container">
-            <span class="crown-emoji">👑</span>
-            <h3 class="queen-name font-script">Dr. Noor Fatima</h3>
-          </div>
-          <blockquote class="section-quote mt-8">
-            "You are not just my love.<br>You are my <em>strength</em>."
-          </blockquote>
-          <div class="support-lines mt-8 max-w-2xl mx-auto">
-            <div class="support-line"><span class="emoji">🌟</span> You support my dreams like they are yours.</div>
-            <div class="support-line"><span class="emoji">🚀</span> You push me to grow.</div>
-            <div class="support-line"><span class="emoji">👫</span> You stand with me, not behind me.</div>
-            <div class="support-line"><span class="emoji">🎖️</span> You respect me in ways that make me proud.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Night Sky -->
-      <section id="nightsky" class="section">
-        <canvas id="stars-canvas"></canvas>
-        <div class="night-content">
-          <div class="section-emoji">🌙✨</div>
-          <p class="section-subtitle font-royal">Written in Stars</p>
-          <h2 class="star-name font-script">Dr. Noor Fatima</h2>
-          <blockquote class="section-quote mt-8">
-            "If I ever made a wish,<br>it would still be <em>you</em>."
-          </blockquote>
-        </div>
-        <div class="shooting-star" id="shooting-star-1"></div>
-        <div class="shooting-star" id="shooting-star-2" style="top: 25%; left: 55%;"></div>
-      </section>
-
-      <!-- Message -->
-      <section id="message" class="section">
-        <div class="glass-card message-card">
-          <div class="message-text">
-            <p class="font-script text-2xl mb-6" style="color: var(--coral);">
-              Dr. Noor Fatima 💕
-            </p>
-            <p>
-              You are not just my favorite woman. You are my <span class="message-highlight">peace</span>. 
-              You are my <span class="message-highlight">comfort</span>. You are the one who respects me, 
-              supports me, and takes care of every small detail in my life. 🥹
-            </p>
-            <p>
-              You make me feel understood. You make me feel valued. 
-              You make me feel at home. ❤️
-            </p>
-            <p>
-              And I never want to imagine a future without you in it.
-            </p>
-            <p class="font-script text-xl mt-6" style="color: var(--coral);">
-              Forever Yours 💋
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Proposal -->
-      <section id="proposal" class="section">
-        <div class="proposal-content">
-          <div id="ring-container">
-            <div class="ring-glow"></div>
-            <canvas id="ring-canvas"></canvas>
-          </div>
-          <div class="proposal-emoji">💍💕</div>
-          <p class="section-subtitle font-royal">Forever</p>
-          <h2 class="section-title font-script">The Question</h2>
-          <p class="proposal-question">
-            Will you stay by my side forever —<br>
-            as my best friend,<br>
-            my life partner,<br>
-            my queen,<br>
-            and my favorite woman? 🥹❤️
-          </p>
-          <div class="proposal-buttons">
-            <button class="proposal-btn btn-yes font-royal" onclick="showCelebration()">
-              <span>❤️</span> Yes, Forever
-            </button>
-            <button class="proposal-btn btn-always font-royal" onclick="showCelebration()">
-              <span>😘</span> Always Yours
-            </button>
-          </div>
-        </div>
-      </section>
+        <p class="signature">— forever yours 💗</p>
+        <button class="btn" id="btnBouquet">See your bouquet 💐</button>
     </div>
 
-    <!-- ========== CELEBRATION PAGE ========== -->
-    <div id="page-celebration" class="page">
-      <canvas id="confetti-canvas"></canvas>
+    <span class="float-heart" style="left:12%; --d:11s; --del:0s; --dx:30px;  font-size:18px">💗</span>
+    <span class="float-heart" style="left:28%; --d:14s; --del:4s; --dx:-25px; font-size:24px">💖</span>
+    <span class="float-heart" style="left:55%; --d:12s; --del:2s; --dx:35px;  font-size:16px">💕</span>
+    <span class="float-heart" style="left:74%; --d:13s; --del:6s; --dx:-30px; font-size:22px">💗</span>
+    <span class="float-heart" style="left:90%; --d:15s; --del:8s; --dx:20px;  font-size:18px">💖</span>
+</section>
 
-      <!-- Celebration Hero -->
-      <div class="celebration-hero">
-        <div class="celebration-emoji">🎉💕</div>
-        <h1 class="celebration-name font-script">Dr. Noor Fatima</h1>
-        <p class="celebration-subtitle font-royal">My Forever Queen 👑</p>
-        <p class="celebration-message">
-          You just made me the happiest person alive! 😭💕<br>
-          This is the beginning of our forever.
-        </p>
-        <div class="celebration-hearts">
-          <span>❤️</span>
-          <span>😘</span>
-          <span>💕</span>
-          <span>🥹</span>
-          <span>✨</span>
+<!-- ═══════════ SCENE 3 : THE BOUQUET ═══════════ -->
+<section class="scene" id="scene-bouquet">
+    <h2 class="scene-title">For You, Always 💐</h2>
+    <div class="bouquet-container" id="bouquet">
+        <div class="shadow"></div>
+        <div class="paper-back"></div>
+        <!-- flowers injected by JS -->
+        <div class="wrapper"></div>
+        <div class="bow">
+            <span class="loop l"></span><span class="loop r"></span><span class="knot"></span>
         </div>
-        <div class="scroll-indicator">
-          <span>Our Names</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Nicknames Section -->
-      <section id="nicknames-section">
-        <div class="text-center mb-12">
-          <div class="section-emoji">💕✨</div>
-          <p class="section-subtitle font-royal">What I Call You</p>
-          <h2 class="section-title font-script">My Names For You</h2>
-        </div>
-        <div class="nicknames-grid">
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">👉🏻👈🏻</div>
-            <p class="nickname-card-text font-script">Meri Jaan</p>
-          </div>
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">❤️😘</div>
-            <p class="nickname-card-text font-script">Meri Mohabat</p>
-          </div>
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">🛡️💕</div>
-            <p class="nickname-card-text font-script">Mera Bachaww</p>
-          </div>
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">🌚❤️‍🩹</div>
-            <p class="nickname-card-text font-script">Meri Jaan Ka Toota</p>
-          </div>
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">😘💕</div>
-            <p class="nickname-card-text font-script">Meri Baby</p>
-          </div>
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">🥹❤️‍🩹</div>
-            <p class="nickname-card-text font-script">Meri Wifey</p>
-          </div>
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">💕🌸</div>
-            <p class="nickname-card-text font-script">Meri Shahzadi</p>
-          </div>
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">🖤✨</div>
-            <p class="nickname-card-text font-script">Meri Pasandida Aurat</p>
-          </div>
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">😍❤️‍🩹</div>
-            <p class="nickname-card-text font-script">Mera Kaka</p>
-          </div>
-          <div class="nickname-card">
-            <div class="nickname-card-emoji">😍💋</div>
-            <p class="nickname-card-text font-script">Meri Life Partner</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Promises -->
-      <section id="promises">
-        <div class="text-center mb-12">
-          <div class="section-emoji">💫💕</div>
-          <p class="section-subtitle font-royal">My Vows</p>
-          <h2 class="section-title font-script">Promises To You</h2>
-        </div>
-        <div class="promises-grid">
-          <div class="promise-card">
-            <div class="promise-number font-royal">01</div>
-            <div class="promise-emoji">❤️</div>
-            <p class="promise-text">I promise to love you more with each passing day, to cherish every moment we share.</p>
-          </div>
-          <div class="promise-card">
-            <div class="promise-number font-royal">02</div>
-            <div class="promise-emoji">🌟</div>
-            <p class="promise-text">I promise to support your dreams, to stand beside you in every challenge.</p>
-          </div>
-          <div class="promise-card">
-            <div class="promise-number font-royal">03</div>
-            <div class="promise-emoji">🏠</div>
-            <p class="promise-text">I promise to be your safe haven, your home, your peace — just as you have been mine.</p>
-          </div>
-          <div class="promise-card">
-            <div class="promise-number font-royal">04</div>
-            <div class="promise-emoji">👑</div>
-            <p class="promise-text">I promise to respect you, honor you, and make you feel like the queen you are.</p>
-          </div>
-          <div class="promise-card">
-            <div class="promise-number font-royal">05</div>
-            <div class="promise-emoji">👂</div>
-            <p class="promise-text">I promise to listen, to understand, and to always make space for your feelings.</p>
-          </div>
-          <div class="promise-card">
-            <div class="promise-number font-royal">06</div>
-            <div class="promise-emoji">💕</div>
-            <p class="promise-text">I promise you will always be my favorite woman, my greatest blessing, my forever choice.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Final Message -->
-      <section id="final-message" class="section">
-        <div class="final-content">
-          <div class="final-emoji">✨❤️✨</div>
-          <h2 class="final-title font-script">My Noor</h2>
-          <p class="final-text">
-            You came into my life and became my light. 🌟<br>
-            You stayed by my side and became my home. 🏠<br>
-            You loved me and made me whole. 💕
-          </p>
-          <p class="final-text mt-8">
-            This is not just a proposal.<br>
-            This is my heart in your hands.<br>
-            This is forever. 💍
-          </p>
-          <p class="final-signature font-script">I love you, Meri Jaan 💋</p>
-          <div class="mt-8 text-3xl">
-            👉🏻👈🏻 ❤️😘 🥹💕
-          </div>
-        </div>
-      </section>
     </div>
-  </div>
+    <div class="final-note">
+        <h2>You make my world bloom <span class="beat">❤️</span></h2>
+        <!-- ✏️ final line — change it to whatever she'd love to hear -->
+        <p>Every flower here is a reason I love you.</p>
+        <button class="replay" id="btnReplay">↺ play it again</button>
+    </div>
+</section>
 
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+<script>
+    const $ = id => document.getElementById(id);
+    const scenes = document.querySelectorAll('.scene');
+    function goTo(id) {
+        scenes.forEach(s => s.classList.toggle('active', s.id === id));
     }
-  }
-  </script>
 
-  <script type="module">
-    import * as THREE from 'three';
+    /* ——— Scene 1 → 2 ——— */
+    let opened = false;
+    $('envelope').addEventListener('click', () => {
+        if (opened) return;
+        opened = true;
+        $('envelope').classList.add('open');
+        const hint = document.querySelector('.hint');
+        if (hint) hint.style.opacity = 0;
+        setTimeout(() => goTo('scene-letter'), 1900);
+    });
 
-    // ========== NICKNAMES DATA ==========
-    const nicknames = [
-      { text: 'Meri Jaan', emoji: '👉🏻👈🏻' },
-      { text: 'Meri Mohabat', emoji: '❤️😘' },
-      { text: 'Mera Bachaww', emoji: '🛡️💕' },
-      { text: 'Meri Jaan Ka Toota', emoji: '🌚' },
-      { text: 'Meri Baby', emoji: '😘💕' },
-      { text: 'Meri Wifey', emoji: '🥹❤️‍🩹' },
-      { text: 'Meri Shahzadi', emoji: '💕🌸' },
-      { text: 'Meri Pasandida Aurat', emoji: '🖤' },
-      { text: 'Mera Kaka', emoji: '😍❤️‍🩹' },
-      { text: 'Meri Life Partner', emoji: '😍💋' },
-      { text: 'Dr. Noor Fatima', emoji: '✨' }
+    /* ——— Scene 2 → 3 ——— */
+    $('btnBouquet').addEventListener('click', () => {
+        goTo('scene-bouquet');
+        buildBouquet();
+        startPetals();
+    });
+
+    $('btnReplay').addEventListener('click', () => location.reload());
+
+    /* ——— Build the bouquet: 9 flowers in a fan ——— */
+    const FLOWERS = [
+        { a: -30, len: 195, size: 54, c: 'c1' },
+        { a: -22, len: 240, size: 56, c: 'c2', leaf: 'l', lt: 148 },
+        { a: -15, len: 275, size: 58, c: 'c3', leaf: 'r', lt: 172 },
+        { a:  -7, len: 305, size: 62, c: 'c4' },
+        { a:   0, len: 328, size: 70, c: 'c5', leaf: 'l', lt: 200 },
+        { a:   7, len: 305, size: 62, c: 'c6', leaf: 'r', lt: 168 },
+        { a:  15, len: 275, size: 58, c: 'c7' },
+        { a:  22, len: 240, size: 56, c: 'c2', leaf: 'r', lt: 140 },
+        { a:  30, len: 195, size: 54, c: 'c3' },
     ];
 
-    const emojis = ['❤️', '😘', '💕', '🥹', '✨', '💋', '🌸', '💔', '❤️‍🩹', '👑', '🖤'];
+    let built = false;
+    function buildBouquet() {
+        if (built) return;
+        built = true;
+        const wrap = $('bouquet');
 
-    // ========== FLOATING NICKNAMES ==========    
-    function createFloatingNicknames() {
-      const container = document.getElementById('floating-names');
-      
-      // Layer 1 - Large
-      for (let i = 0; i < 12; i++) {
-        const nick = nicknames[Math.floor(Math.random() * nicknames.length)];
-        const el = document.createElement('div');
-        el.className = `nickname nick-layer-1 ${Math.random() > 0.5 ? 'nick-glow' : ''}`;
-        el.innerHTML = `<span class="nickname-emoji">${nick.emoji}</span> <span>${nick.text}</span>`;
-        el.style.left = `${Math.random() * 100}%`;
-        el.style.top = `${Math.random() * 100}%`;
-        el.style.animationDelay = `${Math.random() * 18}s`;
-        container.appendChild(el);
-      }
-
-      // Layer 2 - Medium
-      for (let i = 0; i < 18; i++) {
-        const nick = nicknames[Math.floor(Math.random() * nicknames.length)];
-        const el = document.createElement('div');
-        el.className = 'nickname nick-layer-2';
-        el.innerHTML = `<span class="nickname-emoji">${nick.emoji}</span> <span>${nick.text}</span>`;
-        el.style.left = `${Math.random() * 100}%`;
-        el.style.top = `${Math.random() * 100}%`;
-        el.style.animationDelay = `${Math.random() * 14}s`;
-        container.appendChild(el);
-      }
-
-      // Layer 3 - Small
-      for (let i = 0; i < 25; i++) {
-        const nick = nicknames[Math.floor(Math.random() * nicknames.length)];
-        const el = document.createElement('div');
-        el.className = 'nickname nick-layer-3';
-        el.innerHTML = `<span class="nickname-emoji">${nick.emoji}</span> <span>${nick.text}</span>`;
-        el.style.left = `${Math.random() * 100}%`;
-        el.style.top = `${Math.random() * 100}%`;
-        el.style.animationDelay = `${Math.random() * 10}s`;
-        container.appendChild(el);
-      }
-    }
-
-    // ========== FLOATING EMOJIS ==========
-    function createFloatingEmojis() {
-      const container = document.getElementById('floating-emojis');
-      for (let i = 0; i < 20; i++) {
-        const el = document.createElement('div');
-        el.className = 'float-emoji';
-        el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        el.style.left = `${Math.random() * 100}%`;
-        el.style.top = `${Math.random() * 100}%`;
-        el.style.animationDelay = `${Math.random() * 12}s`;
-        el.style.fontSize = `${1 + Math.random() * 1.5}rem`;
-        container.appendChild(el);
-      }
-    }
-
-    // ========== PARTICLES ==========
-    function initParticles() {
-      const canvas = document.getElementById('particles-canvas');
-      const ctx = canvas.getContext('2d');
-      let particles = [];
-
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      class Particle {
-        constructor() {
-          this.reset();
-        }
-
-        reset() {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height;
-          this.size = Math.random() * 3 + 1;
-          this.speedX = (Math.random() - 0.5) * 0.3;
-          this.speedY = (Math.random() - 0.5) * 0.3;
-          this.opacity = Math.random() * 0.5 + 0.2;
-          this.pulse = Math.random() * Math.PI * 2;
-          this.color = Math.random() > 0.5 ? 'rgba(245, 169, 184,' : 'rgba(218, 165, 32,';
-        }
-
-        update() {
-          this.x += this.speedX;
-          this.y += this.speedY;
-          this.pulse += 0.03;
-          if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-            this.reset();
-          }
-        }
-
-        draw() {
-          const o = this.opacity * (0.5 + Math.sin(this.pulse) * 0.5);
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, Math.max(0.5, this.size), 0, Math.PI * 2);
-          ctx.fillStyle = this.color + o + ')';
-          ctx.fill();
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, Math.max(1, this.size * 2), 0, Math.PI * 2);
-          ctx.fillStyle = this.color + (o * 0.3) + ')';
-          ctx.fill();
-        }
-      }
-
-      function init() {
-        particles = [];
-        const count = Math.min(70, Math.floor(window.innerWidth * window.innerHeight / 20000));
-        for (let i = 0; i < count; i++) particles.push(new Particle());
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => { p.update(); p.draw(); });
-        requestAnimationFrame(animate);
-      }
-
-      resize();
-      init();
-      animate();
-      window.addEventListener('resize', () => { resize(); init(); });
-    }
-
-    // ========== STARS ==========
-    function initStars() {
-      const canvas = document.getElementById('stars-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let stars = [];
-
-      function resize() {
-        const section = document.getElementById('nightsky');
-        if (section) {
-          canvas.width = section.offsetWidth;
-          canvas.height = section.offsetHeight;
-        }
-      }
-
-      class Star {
-        constructor() { this.reset(); }
-        reset() {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height;
-          this.size = Math.random() * 2 + 0.5;
-          this.twinkle = Math.random() * Math.PI * 2;
-          this.twinkleSpeed = Math.random() * 0.04 + 0.02;
-        }
-        update() { this.twinkle += this.twinkleSpeed; }
-        draw() {
-          const o = 0.3 + Math.sin(this.twinkle) * 0.7;
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, Math.max(0.5, this.size * 2), 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(245, 169, 184, ${o * 0.2})`;
-          ctx.fill();
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, Math.max(0.3, this.size), 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${o})`;
-          ctx.fill();
-        }
-      }
-
-      function init() {
-        stars = [];
-        const count = Math.min(200, Math.floor(canvas.width * canvas.height / 4000));
-        for (let i = 0; i < count; i++) stars.push(new Star());
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(s => { s.update(); s.draw(); });
-        requestAnimationFrame(animate);
-      }
-
-      resize();
-      init();
-      animate();
-      window.addEventListener('resize', () => { resize(); init(); });
-    }
-
-    // ========== 3D RING ==========
-    function initRing() {
-      const canvas = document.getElementById('ring-canvas');
-      if (!canvas) return;
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setSize(250, 250);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-      const ringGeo = new THREE.TorusGeometry(1.2, 0.12, 32, 100);
-      const ringMat = new THREE.MeshBasicMaterial({ color: 0xDAA520, transparent: true, opacity: 0.95 });
-      const ring = new THREE.Mesh(ringGeo, ringMat);
-      scene.add(ring);
-
-      const diamondGeo = new THREE.OctahedronGeometry(0.35, 2);
-      const diamondMat = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, transparent: true, opacity: 0.98 });
-      const diamond = new THREE.Mesh(diamondGeo, diamondMat);
-      diamond.position.y = 1.2;
-      scene.add(diamond);
-
-      const smallGeo = new THREE.OctahedronGeometry(0.1, 1);
-      [{ x: -0.6, y: 1.05 }, { x: 0.6, y: 1.05 }, { x: -0.9, y: 0.85 }, { x: 0.9, y: 0.85 }].forEach(p => {
-        const sd = new THREE.Mesh(smallGeo, diamondMat);
-        sd.position.set(p.x, p.y, 0);
-        scene.add(sd);
-      });
-
-      camera.position.z = 5;
-
-      function animate() {
-        requestAnimationFrame(animate);
-        ring.rotation.x = 0.3;
-        ring.rotation.y += 0.008;
-        diamond.rotation.y += 0.02;
-        renderer.render(scene, camera);
-      }
-      animate();
-    }
-
-    // ========== CONFETTI ==========
-    function initConfetti() {
-      const canvas = document.getElementById('confetti-canvas');
-      const ctx = canvas.getContext('2d');
-      let confetti = [];
-
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      class Confetto {
-        constructor() { this.reset(); }
-        reset() {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height - canvas.height;
-          this.size = Math.random() * 12 + 6;
-          this.speedY = Math.random() * 4 + 3;
-          this.speedX = (Math.random() - 0.5) * 3;
-          this.rotation = Math.random() * 360;
-          this.rotationSpeed = (Math.random() - 0.5) * 15;
-          this.colors = ['#F5A9B8', '#DAA520', '#FFFFFF', '#FFCDD8', '#E8A0B0'];
-          this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
-          this.isHeart = Math.random() > 0.5;
-        }
-        update() {
-          this.y += this.speedY;
-          this.x += this.speedX;
-          this.rotation += this.rotationSpeed;
-        }
-        draw() {
-          ctx.save();
-          ctx.translate(this.x, this.y);
-          ctx.rotate((this.rotation * Math.PI) / 180);
-          ctx.fillStyle = this.color;
-          if (this.isHeart) {
-            ctx.beginPath();
-            ctx.moveTo(0, -this.size / 4);
-            ctx.bezierCurveTo(-this.size / 2, -this.size / 2, -this.size, 0, 0, this.size / 2);
-            ctx.bezierCurveTo(this.size, 0, this.size / 2, -this.size / 2, 0, -this.size / 4);
-            ctx.fill();
-          } else {
-            ctx.fillRect(-this.size / 2, -this.size / 4, this.size, this.size / 2);
-          }
-          ctx.restore();
-        }
-      }
-
-      function init() {
-        confetti = [];
-        for (let i = 0; i < 180; i++) confetti.push(new Confetto());
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        confetti.forEach(c => { c.update(); c.draw(); if (c.y > canvas.height + 50) c.reset(); });
-        requestAnimationFrame(animate);
-      }
-
-      resize();
-      init();
-      animate();
-      window.addEventListener('resize', resize);
-    }
-
-    // ========== SCROLL ANIMATIONS ==========
-    function initScrollAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.15 });
-
-      document.querySelectorAll('.support-line, .care-card, .promise-card, .nickname-card, .crown-emoji, .queen-name, .star-name').forEach((el, i) => {
-        el.style.transitionDelay = `${i * 0.05}s`;
-        observer.observe(el);
-      });
-
-      // Shooting stars
-      const nightSection = document.getElementById('nightsky');
-      if (nightSection) {
-        const nightObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              setInterval(() => {
-                const s1 = document.getElementById('shooting-star-1');
-                const s2 = document.getElementById('shooting-star-2');
-                if (s1) { s1.classList.remove('animate'); void s1.offsetWidth; s1.classList.add('animate'); }
-              }, 4000);
-              setInterval(() => {
-                const s2 = document.getElementById('shooting-star-2');
-                if (s2) { s2.classList.remove('animate'); void s2.offsetWidth; s2.classList.add('animate'); }
-              }, 5500);
+        FLOWERS.forEach((f, i) => {
+            const n = f.size > 60 ? 8 : 6;                 // big flowers get 8 petals
+            let petals = '';
+            for (let j = 0; j < n; j++) {
+                petals += `<div class="petal" style="transform:rotate(${360 / n * j}deg)"></div>`;
             }
-          });
-        }, { threshold: 0.3 });
-        nightObserver.observe(nightSection);
-      }
+            const leaf = f.leaf
+                ? `<div class="leaf leaf-${f.leaf}" style="top:${f.lt}px; --lf:${(1 + i * .12).toFixed(2)}s"></div>`
+                : '';
+
+            const g = document.createElement('div');
+            g.className = 'flower-group';
+            g.style.height = f.len + 'px';
+            g.style.transform = `rotate(${f.a}deg)`;
+            g.style.zIndex = 10 + Math.round(f.len / 10);
+            g.innerHTML = `
+                <div class="sway" style="animation-delay:${(-i * 0.9).toFixed(1)}s">
+                    <div class="stem" style="--g:${(0.3 + i * 0.1).toFixed(2)}s"></div>
+                    ${leaf}
+                    <div class="flower ${f.c}" style="--fs:${f.size}px; --p:${(1.3 + i * 0.14).toFixed(2)}s">
+                        <div class="petals" style="--sd:${(14 + i * 1.6).toFixed(1)}s">${petals}</div>
+                        <div class="center"></div>
+                    </div>
+                </div>`;
+            wrap.appendChild(g);
+        });
+
+        /* baby's-breath clusters tucked between the flowers */
+        [[70, 95], [292, 102], [122, 58], [236, 64], [182, 28], [52, 160], [306, 160]]
+            .forEach((pos, i) => {
+                const d = document.createElement('div');
+                d.className = 'filler';
+                d.style.left = pos[0] + 'px';
+                d.style.top = pos[1] + 'px';
+                d.style.setProperty('--p', (1.9 + i * 0.15).toFixed(2) + 's');
+                wrap.appendChild(d);
+            });
     }
 
-    // ========== CELEBRATION ==========
-    window.showCelebration = function() {
-      document.getElementById('page-proposal').style.display = 'none';
-      document.getElementById('page-celebration').classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'instant' });
-      initConfetti();
-      setTimeout(initScrollAnimations, 100);
-    };
+    /* ——— falling petals in the bouquet scene ——— */
+    function startPetals() {
+        const scene = $('scene-bouquet');
+        const colors = ['', 'fp2', 'fp3', 'fp4', 'fp5'];
+        for (let i = 0; i < 12; i++) {
+            const p = document.createElement('span');
+            p.className = 'fall-petal ' + colors[i % 5];
+            p.style.left = (Math.random() * 100).toFixed(1) + 'vw';
+            p.style.setProperty('--d',   (9  + Math.random() * 8).toFixed(1) + 's');
+            p.style.setProperty('--del', (Math.random() * 9).toFixed(1) + 's');
+            p.style.setProperty('--dx',  (Math.random() * 12 - 6).toFixed(1) + 'vw');
+            scene.appendChild(p);
+        }
+    }
+</script>
 
-    // ========== INIT ==========
-    createFloatingNicknames();
-    createFloatingEmojis();
-    initParticles();
-    initStars();
-    initRing();
-    initScrollAnimations();
-  </script>
 </body>
-
 </html>
